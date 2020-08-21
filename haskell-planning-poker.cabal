@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 53b96fe8298ce231172805e5d8ea3a5d97b1b1805a1e9f6feef4b8dbc407ffa8
+-- hash: 11d2c029c1cb8c61563213cbb0e5534703df4ecad03ffc6b403221a23c27ba79
 
 name:           haskell-planning-poker
 version:        0.1.0.0
@@ -27,13 +27,18 @@ source-repository head
 
 library
   exposed-modules:
+      ClientContract
+      Domain
       Lib
   other-modules:
       Paths_haskell_planning_poker
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , hashmap
+    , random
     , text
     , websockets
   default-language: Haskell2010
@@ -46,8 +51,11 @@ executable haskell-planning-poker-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , hashmap
     , haskell-planning-poker
+    , random
     , text
     , websockets
   default-language: Haskell2010
@@ -61,8 +69,11 @@ test-suite haskell-planning-poker-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , hashmap
     , haskell-planning-poker
+    , random
     , text
     , websockets
   default-language: Haskell2010
